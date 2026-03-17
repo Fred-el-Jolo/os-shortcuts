@@ -83,6 +83,18 @@ const KEY_MAP: Record<string, string> = {
   xf86calculator: "CALC",
   xf86sleep: "SLEEP",
   xf86power: "POWER",
+  ampersand: "11",
+  eacute: "22",
+  quotedbl: "33",
+  apostrophe: "44",
+  parenleft: "55",
+  minus: "66",
+  egrave: "77",
+  underscore: "88",
+  ccedilla: "99",
+  agrave: "00",
+  exclam: "!",
+  period: ".",
 };
 
 function getKeyLabel(key: string): string {
@@ -118,6 +130,65 @@ const DISPATCHER_TEMPLATES: Record<string, string> = {
   pin: "Pin window",
 };
 
+const SKIPPED_TEXT: string[] = [
+  'caelestia:launcherInterrupt',
+];
+
+const SUBMAPPING: Record<string, string> = {
+  'caelestia:launcher': 'Launcher',
+  'caelestia:session': 'Shutdown panel',
+  'caelestia:clearNotifs': 'Clear Notifs',
+  'caelestia:showall': 'Show all panels',
+  'caelestia:lock': 'Lock',
+  'caelestia:brightnessUp': 'Brightness Up',
+  'caelestia:brightnessDown': 'Brightness Down',
+  'caelestia:mediaToggle': 'Toggle media',
+  'caelestia:mediaNext': 'Next media',
+  'caelestia:mediaPrev': 'Previous media',
+  'caelestia:mediaStop': 'Stop media',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 1': 'Move to Workspace in group 1',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 2': 'Move to Workspace in group 2',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 3': 'Move to Workspace in group 3',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 4': 'Move to Workspace in group 4',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 5': 'Move to Workspace in group 5',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 6': 'Move to Workspace in group 6',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 7': 'Move to Workspace in group 7',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 8': 'Move to Workspace in group 8',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 9': 'Move to Workspace in group 9',
+  '~/.config/hypr/scripts/wsaction.fish -g workspace 10': 'Move to Workspace in group 10',
+  'caelestia toggle specialws': 'Toggle special workspace',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 1': 'Move to workspace 1',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 2': 'Move to workspace 2',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 3': 'Move to workspace 3',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 4': 'Move to workspace 4',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 5': 'Move to workspace 5',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 6': 'Move to workspace 6',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 7': 'Move to workspace 7',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 8': 'Move to workspace 8',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 9': 'Move to workspace 9',
+  '~/.config/hypr/scripts/wsaction.fish movetoworkspace 10': 'Move to workspace 10',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 1': 'Move to workspace in group 1',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 2': 'Move to workspace in group 2',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 3': 'Move to workspace in group 3',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 4': 'Move to workspace in group 4',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 5': 'Move to workspace in group 5',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 6': 'Move to workspace in group 6',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 7': 'Move to workspace in group 7',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 8': 'Move to workspace in group 8',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 9': 'Move to workspace in group 9',
+  '~/.config/hypr/scripts/wsaction.fish -g movetoworkspace 10': 'Move to workspace in group 10',
+  '~/.config/hypr/scripts/wsaction.fish workspace 1': 'Set workspace 1 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 2': 'Set workspace 2 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 3': 'Set workspace 3 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 4': 'Set workspace 4 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 5': 'Set workspace 5 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 6': 'Set workspace 6 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 7': 'Set workspace 7 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 8': 'Set workspace 8 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 9': 'Set workspace 9 on current display if free',
+  '~/.config/hypr/scripts/wsaction.fish workspace 10': 'Set workspace 10 on current display if free',
+};
+
 const ARG_SUBS: Record<string, string> = {
   u: "up",
   d: "down",
@@ -140,6 +211,7 @@ function parseDescription(bind: HyprBind): ParsedDesc {
   let spacer = false;
   let heading = "";
   let text = raw;
+  let skip = false;
 
   if (text.startsWith("!br")) {
     spacer = true;
@@ -164,7 +236,15 @@ function parseDescription(bind: HyprBind): ParsedDesc {
     text = template.replace("{arg}", arg).replace("{description}", "").trim();
   }
 
-  return { skip: false, spacer, heading, text };
+  if (SKIPPED_TEXT.includes(text)) {
+    skip = true;
+  }
+
+  if (SUBMAPPING[text]) {
+    text = SUBMAPPING[text];
+  }
+
+  return { skip, spacer, heading, text };
 }
 
 // ─── Group binds by submap ────────────────────────────────────────────────────
@@ -253,15 +333,17 @@ function renderBindRow(entry: BindEntry & { type: "bind" }): HTMLElement {
   return row;
 }
 
-function renderGroup(submap: string, entries: BindEntry[]): HTMLElement {
+function renderGroup(submap: string, entries: BindEntry[], showHeader = true): HTMLElement {
   const section = document.createElement("section");
   section.className = "submap-group";
   section.dataset.submap = submap;
 
-  const header = document.createElement("h2");
-  header.className = "submap-header";
-  header.textContent = submap === "default" ? "Global" : submap;
-  section.appendChild(header);
+  if (showHeader) {
+    const header = document.createElement("h2");
+    header.className = "submap-header";
+    header.textContent = submap === "default" ? "Global" : submap;
+    section.appendChild(header);
+  }
 
   const grid = document.createElement("div");
   grid.className = "binds-list";
@@ -306,10 +388,12 @@ function renderAll(groups: Map<string, BindEntry[]>): void {
     return a.localeCompare(b);
   });
 
+  const singleGroup = submaps.length === 1;
+
   for (const submap of submaps) {
     const entries = groups.get(submap)!;
     if (entries.length === 0) continue;
-    container.appendChild(renderGroup(submap, entries));
+    container.appendChild(renderGroup(submap, entries, !singleGroup));
   }
 }
 
