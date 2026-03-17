@@ -1,12 +1,17 @@
 {
   "name": "os-shortcuts",
-  "module": "index.ts",
-  "type": "module",
   "private": true,
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "electrobun": "^1.15.1"
+  },
+  "scripts": {
+    "start": "bun run build:dev && electrobun dev",
+    "build:dev": "bun install && electrobun build"
   }
 }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OS Shortcuts</title>
+  <script src="views://main-ui/index.js" defer></script>
+  <style>
+    /* ── Catppuccin Mocha palette ── */
+    :root {
+      --base:    #1e1e2e;
+      --mantle:  #181825;
+      --crust:   #11111b;
+      --surface0: #313244;
+      --surface1: #45475a;
+      --surface2: #585b70;
+      --overlay0: #6c7086;
+      --overlay1: #7f849c;
+      --text:    #cdd6f4;
+      --subtext0: #a6adc8;
+      --subtext1: #bac2de;
+      --lavender: #b4befe;
+      --blue:    #89b4fa;
+      --sapphire: #74c7ec;
+      --sky:     #89dceb;
+      --teal:    #94e2d5;
+      --green:   #a6e3a1;
+      --yellow:  #f9e2af;
+      --peach:   #fab387;
+      --maroon:  #eba0ac;
+      --red:     #f38ba8;
+      --mauve:   #cba6f7;
+      --pink:    #f5c2e7;
+      --flamingo: #f2cdcd;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--base);
+      color: var(--text);
+      font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--crust);
+      border-bottom: 1px solid var(--surface0);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--mauve);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    #search {
+      flex: 1;
+      max-width: 340px;
+      background: var(--surface0);
+      border: 1px solid var(--surface1);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 5px 12px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #search::placeholder { color: var(--overlay0); }
+    #search:focus { border-color: var(--mauve); }
+
+    .count {
+      font-size: 11px;
+      color: var(--overlay1);
+      white-space: nowrap;
+    }
+
+    /* ── Main layout ── */
+    main {
+      padding: 16px 20px 40px;
+      columns: 2;
+      column-gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      main { columns: 1; }
+    }
+    @media (min-width: 1400px) {
+      main { columns: 3; }
+    }
+
+    /* ── Submap sections ── */
+    .submap-group {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      background: var(--mantle);
+      border: 1px solid var(--surface0);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .submap-header {
+      background: var(--surface0);
+      color: var(--lavender);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-bottom: 1px solid var(--surface1);
+    }
+
+    .binds-list {
+      padding: 4px 0;
+    }
+
+    /* ── Bind rows ── */
+    .bind-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      transition: background 0.1s;
+    }
+    .bind-row:hover { background: var(--surface0); }
+
+    .bind-keys {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .bind-desc {
+      color: var(--subtext1);
+      font-size: 14px;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── Modifier pills ── */
+    .mod, .key {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+
+    .mod-super  { background: rgba(203,166,247,0.18); color: var(--mauve);   border: 1px solid rgba(203,166,247,0.35); }
+    .mod-shift  { background: rgba(250,179,135,0.18); color: var(--peach);   border: 1px solid rgba(250,179,135,0.35); }
+    .mod-ctrl   { background: rgba(137,180,250,0.18); color: var(--blue);    border: 1px solid rgba(137,180,250,0.35); }
+    .mod-alt    { background: rgba(166,227,161,0.18); color: var(--green);   border: 1px solid rgba(166,227,161,0.35); }
+    .mod-hypr   { background: rgba(243,188,168,0.18); color: var(--flamingo); border: 1px solid rgba(243,188,168,0.35); }
+    .mod-altgr  { background: rgba(148,226,213,0.18); color: var(--teal);    border: 1px solid rgba(148,226,213,0.35); }
+    .mod-caps   { background: rgba(249,226,175,0.18); color: var(--yellow);  border: 1px solid rgba(249,226,175,0.35); }
+    .mod-num    { background: rgba(127,132,156,0.18); color: var(--overlay1); border: 1px solid rgba(127,132,156,0.35); }
+    .mod-other  { background: rgba(127,132,156,0.18); color: var(--overlay1); border: 1px solid rgba(127,132,156,0.35); }
+
+    .key {
+      background: var(--surface1);
+      color: var(--text);
+      border: 1px solid var(--surface2);
+      min-width: 22px;
+      justify-content: center;
+    }
+
+    /* ── Plus separator between mods and key ── */
+    .bind-keys .mod + .key::before,
+    .bind-keys .mod + .mod::before {
+      /* no separator — gap handles spacing */
+    }
+
+    /* ── Sub-headings / spacers ── */
+    .bind-subheading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sapphire);
+      padding: 8px 12px 2px;
+    }
+
+    .bind-spacer {
+      height: 6px;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--mantle); }
+    ::-webkit-scrollbar-thumb { background: var(--surface1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--surface2); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>OS Shortcuts</h1>
+    <input type="search" id="search" placeholder="Filter by key or description…" autocomplete="off" spellcheck="false">
+    <span class="count" id="count"></span>
+  </header>
+  <main id="binds-container"></main>
+</body>
+</html>
