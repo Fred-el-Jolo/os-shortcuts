@@ -11,7 +11,8 @@
     "electrobun": "^1.15.1"
   },
   "scripts": {
-    "start": "bun run build:dev && electrobun dev",
+    "gen:html": "bun run src/generate-html/generate.ts",
+    "start": "bun run gen:html && bun run build:dev && electrobun dev",
     "build:dev": "bun install && electrobun build"
   }
 }

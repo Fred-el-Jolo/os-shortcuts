@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OS Shortcuts</title>
-  <script src="views://main-ui/index.js" defer></script>
   <style>
     /* ── Catppuccin Mocha palette ── */
     :root {
@@ -157,13 +156,13 @@
       white-space: nowrap;
     }
 
-    .mod-super  { background: rgba(203,166,247,0.18); color: var(--mauve);   border: 1px solid rgba(203,166,247,0.35); }
-    .mod-shift  { background: rgba(250,179,135,0.18); color: var(--peach);   border: 1px solid rgba(250,179,135,0.35); }
-    .mod-ctrl   { background: rgba(137,180,250,0.18); color: var(--blue);    border: 1px solid rgba(137,180,250,0.35); }
-    .mod-alt    { background: rgba(166,227,161,0.18); color: var(--green);   border: 1px solid rgba(166,227,161,0.35); }
+    .mod-super  { background: rgba(203,166,247,0.18); color: var(--mauve);    border: 1px solid rgba(203,166,247,0.35); }
+    .mod-shift  { background: rgba(250,179,135,0.18); color: var(--peach);    border: 1px solid rgba(250,179,135,0.35); }
+    .mod-ctrl   { background: rgba(137,180,250,0.18); color: var(--blue);     border: 1px solid rgba(137,180,250,0.35); }
+    .mod-alt    { background: rgba(166,227,161,0.18); color: var(--green);    border: 1px solid rgba(166,227,161,0.35); }
     .mod-hypr   { background: rgba(243,188,168,0.18); color: var(--flamingo); border: 1px solid rgba(243,188,168,0.35); }
-    .mod-altgr  { background: rgba(148,226,213,0.18); color: var(--teal);    border: 1px solid rgba(148,226,213,0.35); }
-    .mod-caps   { background: rgba(249,226,175,0.18); color: var(--yellow);  border: 1px solid rgba(249,226,175,0.35); }
+    .mod-altgr  { background: rgba(148,226,213,0.18); color: var(--teal);     border: 1px solid rgba(148,226,213,0.35); }
+    .mod-caps   { background: rgba(249,226,175,0.18); color: var(--yellow);   border: 1px solid rgba(249,226,175,0.35); }
     .mod-num    { background: rgba(127,132,156,0.18); color: var(--overlay1); border: 1px solid rgba(127,132,156,0.35); }
     .mod-other  { background: rgba(127,132,156,0.18); color: var(--overlay1); border: 1px solid rgba(127,132,156,0.35); }
 
@@ -173,26 +172,6 @@
       border: 1px solid var(--surface2);
       min-width: 22px;
       justify-content: center;
-    }
-
-    /* ── Plus separator between mods and key ── */
-    .bind-keys .mod + .key::before,
-    .bind-keys .mod + .mod::before {
-      /* no separator — gap handles spacing */
-    }
-
-    /* ── Sub-headings / spacers ── */
-    .bind-subheading {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--sapphire);
-      padding: 8px 12px 2px;
-    }
-
-    .bind-spacer {
-      height: 6px;
     }
 
     /* ── Scrollbar ── */
@@ -206,8 +185,191 @@
   <header>
     <h1>OS Shortcuts</h1>
     <input type="search" id="search" placeholder="Filter by key or description…" autocomplete="off" spellcheck="false">
-    <span class="count" id="count"></span>
+    <span class="count" id="count">106 binds</span>
   </header>
-  <main id="binds-container"></main>
+  <main id="binds-container">
+
+    <section class="submap-group" data-category="Launcher">
+      <h2 class="submap-header">Launcher</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span></div><div class="bind-desc">Launcher</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">K</span></div><div class="bind-desc">Show all panels</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="System">
+      <h2 class="submap-header">System</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">L</span></div><div class="bind-desc">Lock</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">L</span></div><div class="bind-desc">Lock</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">L</span></div><div class="bind-desc">Unlock</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">DEL</span></div><div class="bind-desc">Shutdown panel</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">L</span></div><div class="bind-desc">Suspend &amp; hibernate</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="mod mod-ctrl">CTRL</span><span class="key">R</span></div><div class="bind-desc">Kill shell</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">R</span></div><div class="bind-desc">Kill &amp; restart shell</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">C</span></div><div class="bind-desc">Clear notifications</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Apps">
+      <h2 class="submap-header">Apps</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">T</span></div><div class="bind-desc">Open Terminal</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">W</span></div><div class="bind-desc">Open Firefox</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Windows">
+      <h2 class="submap-header">Windows</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">Q</span></div><div class="bind-desc">Close window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">F</span></div><div class="bind-desc">Toggle maximize</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">F</span></div><div class="bind-desc">Toggle maximize</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">LEFT</span></div><div class="bind-desc">Move focus left</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">RIGHT</span></div><div class="bind-desc">Move focus right</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">UP</span></div><div class="bind-desc">Move focus up</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">DOWN</span></div><div class="bind-desc">Move focus down</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-alt">ALT</span><span class="key">TAB</span></div><div class="bind-desc">Move focus</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-shift">SHIFT</span><span class="mod mod-alt">ALT</span><span class="key">TAB</span></div><div class="bind-desc">Move focus prev</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">LEFT</span></div><div class="bind-desc">Move window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">RIGHT</span></div><div class="bind-desc">Move window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">UP</span></div><div class="bind-desc">Move window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">DOWN</span></div><div class="bind-desc">Move window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">P</span></div><div class="bind-desc">Pin window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">SPACE</span></div><div class="bind-desc">Toggle float</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">!</span></div><div class="bind-desc">Center floating window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">!</span></div><div class="bind-desc">Center floating window</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">!</span></div><div class="bind-desc">Resize exact 55% 70%</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">BACKSLASH</span></div><div class="bind-desc">Picture in Picture mode</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Groups">
+      <h2 class="submap-header">Groups</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">COMMA</span></div><div class="bind-desc">Toggle group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">U</span></div><div class="bind-desc">Remove from group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">G</span></div><div class="bind-desc">Lock the active group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">TAB</span></div><div class="bind-desc">Change active group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-shift">SHIFT</span><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">TAB</span></div><div class="bind-desc">Change active group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">UP</span></div><div class="bind-desc">Move window into group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">RIGHT</span></div><div class="bind-desc">Move window into group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">DOWN</span></div><div class="bind-desc">Move window into group</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">LEFT</span></div><div class="bind-desc">Move window into group</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Workspaces">
+      <h2 class="submap-header">Workspaces</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">&amp;</span></div><div class="bind-desc">Go to workspace 1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">é</span></div><div class="bind-desc">Go to workspace 2</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">&quot;</span></div><div class="bind-desc">Go to workspace 3</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">'</span></div><div class="bind-desc">Go to workspace 4</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">(</span></div><div class="bind-desc">Go to workspace 5</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">-</span></div><div class="bind-desc">Go to workspace 6</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">è</span></div><div class="bind-desc">Go to workspace 7</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">_</span></div><div class="bind-desc">Go to workspace 8</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">ç</span></div><div class="bind-desc">Go to workspace 9</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">à</span></div><div class="bind-desc">Go to workspace 10</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">MOUSE_DOWN</span></div><div class="bind-desc">Goto workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">LEFT</span></div><div class="bind-desc">Goto workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">PAGE_UP</span></div><div class="bind-desc">Goto workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">MOUSE_UP</span></div><div class="bind-desc">Goto workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">RIGHT</span></div><div class="bind-desc">Goto workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">PAGE_DOWN</span></div><div class="bind-desc">Goto workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">MOUSE_DOWN</span></div><div class="bind-desc">Goto workspace -10</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">MOUSE_UP</span></div><div class="bind-desc">Goto workspace +10</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">S</span></div><div class="bind-desc">Toggle special workspace</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-shift">SHIFT</span><span class="mod mod-ctrl">CTRL</span><span class="key">ESC</span></div><div class="bind-desc">Toggle system monitor workspace</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">M</span></div><div class="bind-desc">Toggle music workspace</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">D</span></div><div class="bind-desc">Toggle social workspace</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">R</span></div><div class="bind-desc">Toggle todo workspace</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">&amp;</span></div><div class="bind-desc">Move to workspace 1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">é</span></div><div class="bind-desc">Move to workspace 2</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">&quot;</span></div><div class="bind-desc">Move to workspace 3</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">'</span></div><div class="bind-desc">Move to workspace 4</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">(</span></div><div class="bind-desc">Move to workspace 5</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">-</span></div><div class="bind-desc">Move to workspace 6</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">è</span></div><div class="bind-desc">Move to workspace 7</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">_</span></div><div class="bind-desc">Move to workspace 8</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">ç</span></div><div class="bind-desc">Move to workspace 9</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">à</span></div><div class="bind-desc">Move to workspace 10</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">PAGE_UP</span></div><div class="bind-desc">Move to workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">MOUSE_DOWN</span></div><div class="bind-desc">Move to workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="mod mod-ctrl">CTRL</span><span class="key">LEFT</span></div><div class="bind-desc">Move to workspace -1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">PAGE_DOWN</span></div><div class="bind-desc">Move to workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">MOUSE_UP</span></div><div class="bind-desc">Move to workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="mod mod-ctrl">CTRL</span><span class="key">RIGHT</span></div><div class="bind-desc">Move to workspace +1</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">S</span></div><div class="bind-desc">Move to special workspace</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Media &amp; Audio">
+      <h2 class="submap-header">Media &amp; Audio</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">SPACE</span></div><div class="bind-desc">Toggle media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">PLAY</span></div><div class="bind-desc">Toggle media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">PAUSE</span></div><div class="bind-desc">Toggle media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">EQUAL</span></div><div class="bind-desc">Next media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">NEXT</span></div><div class="bind-desc">Next media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-ctrl">CTRL</span><span class="key">-</span></div><div class="bind-desc">Previous media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">PREV</span></div><div class="bind-desc">Previous media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">STOP</span></div><div class="bind-desc">Stop media</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">VOL+</span></div><div class="bind-desc">Volume up</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">VOL-</span></div><div class="bind-desc">Volume down</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">MUTE</span></div><div class="bind-desc">Toggle audio mute</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">M</span></div><div class="bind-desc">Toggle audio mute</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">MIC MUTE</span></div><div class="bind-desc">Toggle mic mute</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">BRIGHT+</span></div><div class="bind-desc">Brightness Up</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="key">BRIGHT-</span></div><div class="bind-desc">Brightness Down</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Screenshots &amp; Recording">
+      <h2 class="submap-header">Screenshots &amp; Recording</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="key">PRTSC</span></div><div class="bind-desc">Screenshot</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">S</span></div><div class="bind-desc">Region screenshot (Freeze)</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="mod mod-alt">ALT</span><span class="key">S</span></div><div class="bind-desc">Region screenshot</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">R</span></div><div class="bind-desc">Video capture with sound</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-ctrl">CTRL</span><span class="mod mod-alt">ALT</span><span class="key">R</span></div><div class="bind-desc">Video capture</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="mod mod-alt">ALT</span><span class="key">R</span></div><div class="bind-desc">Region video capture</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-shift">SHIFT</span><span class="key">C</span></div><div class="bind-desc">Color picker</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Clipboard &amp; Utilities">
+      <h2 class="submap-header">Clipboard &amp; Utilities</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">V</span></div><div class="bind-desc">Clipboard overlay</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">V</span></div><div class="bind-desc">Delete clipboard entry</div></div>
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="key">;</span></div><div class="bind-desc">Emoji selector</div></div>
+      </div>
+    </section>
+
+    <section class="submap-group" data-category="Other">
+      <h2 class="submap-header">Other</h2>
+      <div class="binds-list">
+        <div class="bind-row"><div class="bind-keys"><span class="mod mod-super">SUPER</span><span class="mod mod-alt">ALT</span><span class="key">F12</span></div><div class="bind-desc">notify-send -u low -i dialog-information-symbolic 'Test notification' &quot;Here's a really long message to test truncation and wrapping\nYou can middle click or flick this notification to dismiss it!&quot; -a 'Shell' -A &quot;Test1=I got it!&quot; -A &quot;Test2=Another action&quot;</div></div>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      function applyFilter(query) {
+        var q = query.toLowerCase().trim();
+        document.querySelectorAll('.bind-row').forEach(function (row) {
+          row.style.display = !q || row.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+        document.querySelectorAll('.submap-group').forEach(function (section) {
+          var visible = section.querySelectorAll('.bind-row:not([style*="none"])');
+          section.style.display = visible.length > 0 ? '' : 'none';
+        });
+      }
+      var searchEl = document.getElementById('search');
+      searchEl.addEventListener('input', function () { applyFilter(searchEl.value); });
+    })();
+  </script>
 </body>
 </html>
