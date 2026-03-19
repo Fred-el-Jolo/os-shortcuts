@@ -13,6 +13,7 @@
   "scripts": {
     "gen:html": "bun run src/generate-html/generate.ts",
     "start": "bun run gen:html && bun run build:dev && electrobun dev",
-    "build:dev": "bun install && electrobun build"
+    "build:dev": "bun install && electrobun build",
+    "build:stable": "electrobun build --env=stable"
   }
 }
