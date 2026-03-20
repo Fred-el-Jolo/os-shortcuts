@@ -2142,6 +2142,24 @@
     "arg": "pkill fuzzel || caelestia emoji -p"
 },
 {
+    "locked": false,
+    "mouse": false,
+    "release": false,
+    "repeat": false,
+    "longPress": false,
+    "non_consuming": false,
+    "has_description": false,
+    "modmask": 64,
+    "submap": "global",
+    "submap_universal": "false",
+    "key": "H",
+    "keycode": 0,
+    "catch_all": false,
+    "description": "",
+    "dispatcher": "exec",
+    "arg": "/home/jolo/.local/bin/os-shortcuts"
+},
+{
     "locked": true,
     "mouse": false,
     "release": false,

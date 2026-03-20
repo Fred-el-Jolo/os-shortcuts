@@ -216,6 +216,7 @@ const SUBMAPPING: Record<string, string> = {
     "Test notifications",
   moveintogroup: "Move window into group",
   centerwindow: "Center floating window",
+  "/home/jolo/.local/bin/os-shortcuts": "Key bindings",
 };
 
 const ARG_SUBS: Record<string, string> = {
@@ -332,6 +333,7 @@ export const SHORTCUT_ORDER: string[] = [
   "Delete clipboard entry",
   "Emoji selector",
   "Test notifications",
+  "Key bindings",
 ];
 
 // ─── CATEGORIES ───────────────────────────────────────────────────────────────
@@ -459,6 +461,7 @@ export const CATEGORIES: { name: string; descs: string[] }[] = [
       "Delete clipboard entry",
       "Emoji selector",
       "Test notifications",
+      "Key bindings",
     ],
   },
 ];
